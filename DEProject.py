@@ -43,3 +43,25 @@ if __name__ == "__main__":
         frdsdict.update({document.get('user')['screen_name']:document.get('user')['friends_count']})
         coordlist.append(document.get('place')['bounding_box']['coordinates'][0][0])
         placelist.append(document.get('place')['name']) 
+
+#------------------------------------------------------------ 
+#----- Top 10 Languages -------------------------------------
+#------------------------------------------------------------ 
+
+    counter1=collections.Counter(langlist)
+
+    langtype = []
+    langtypecnt = []
+    for i,j in counter1.most_common(10):
+        langtype.append(i)
+        langtypecnt.append(j)
+    
+    y_pos = np.arange(len(langtype))
+
+    plt.bar(y_pos, langtypecnt, align='center', alpha=0.9, color='#AC34B9')
+    plt.xticks(y_pos, langtype)
+    plt.ylabel('Users')
+    plt.title('Top 10 Languages')
+
+    plt.show()
+    
