@@ -65,3 +65,23 @@ if __name__ == "__main__":
 
     plt.show()
     
+#------------------------------------------------------------ 
+#----- Top 10 Sources ---------------------------------------
+#------------------------------------------------------------ 
+    counter2=collections.Counter(sourcelist)
+    sourcetype = []
+    sourcetypecnt = []
+    for i,j in counter2.most_common(10):
+        s = i.find('>')
+        e = i.find('</a>')
+        
+        sourcetype.append(i[s+1:e])
+        sourcetypecnt.append(j)
+    y_pos = np.arange(len(sourcetype))
+
+    plt.bar(y_pos, sourcetypecnt, align='center', alpha=0.9, color='#8BB309')
+    plt.xticks(y_pos, sourcetype,rotation=90)
+    plt.ylabel('Users')
+    plt.title('Top 10 Sources')
+
+    plt.show()    
