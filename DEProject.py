@@ -111,3 +111,24 @@ if __name__ == "__main__":
     plt.title('Top 10 Hash Tags')
 
     plt.show() 
+
+#------------------------------------------------------------ 
+#----- Top 10 Users(screen_name) with followers -------------
+#------------------------------------------------------------     
+    
+    counter4=collections.Counter(followdict)    
+    followuser = []
+    followcnt = []
+    for i,j in counter4.most_common(10):
+        followuser.append(i)
+        followcnt.append(j)
+    
+    y_pos = np.arange(len(followuser))
+
+    plt.bar(y_pos, followcnt, align='center', alpha=0.9, color='g')
+    plt.xticks(y_pos, followuser,rotation=90)
+    plt.ylabel('Followers')
+    plt.title('Top 10 Users(screen_name) with followers')
+
+    plt.show()
+  
