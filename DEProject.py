@@ -85,3 +85,29 @@ if __name__ == "__main__":
     plt.title('Top 10 Sources')
 
     plt.show()    
+    
+#------------------------------------------------------------ 
+#----- Top 10 Hash Tags -------------------------------------
+#------------------------------------------------------------     
+
+    hashlist1 = []
+    for i in hashlist:
+        if i != []:
+            #print(i)
+            for j in range(0,len(i)):
+                hashlist1.append(i[j]['text'])
+
+    counter3=collections.Counter(hashlist1)
+    hashtype = []
+    hashtypecnt = []
+    for i,j in counter3.most_common(10):
+        hashtype.append(i)
+        hashtypecnt.append(j)
+    y_pos = np.arange(len(hashtype))
+
+    plt.bar(y_pos, hashtypecnt, align='center', alpha=0.9, color='b')
+    plt.xticks(y_pos, hashtype,rotation=90)
+    plt.ylabel('Counts')
+    plt.title('Top 10 Hash Tags')
+
+    plt.show() 
