@@ -152,4 +152,23 @@ if __name__ == "__main__":
 
     plt.show()
     
+#------------------------------------------------------------ 
+#----- Top 10 Cities ----------------------------------------
+#------------------------------------------------------------     
+ 
+    counter6=collections.Counter(placelist)
 
+    placetype = []
+    placetypecnt = []
+    for i,j in counter6.most_common(10):
+        placetype.append(i)
+        placetypecnt.append(j)
+    
+    y_pos = np.arange(len(placetype))
+
+    plt.bar(y_pos, placetypecnt, align='center', alpha=0.9, color='b')
+    plt.xticks(y_pos, placetype,rotation=90)
+    plt.ylabel('Users')
+    plt.title('Top 10 Cities')
+
+    plt.show()
