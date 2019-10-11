@@ -132,3 +132,24 @@ if __name__ == "__main__":
 
     plt.show()
   
+#------------------------------------------------------------ 
+#----- Top 10 Users(screen_name) with Friends ---------------
+#------------------------------------------------------------     
+      
+    counter5=collections.Counter(frdsdict)    
+    frdsuser = []
+    frdscnt = []
+    for i,j in counter5.most_common(10):
+        frdsuser.append(i)
+        frdscnt.append(j)
+    
+    y_pos = np.arange(len(frdsuser))
+
+    plt.bar(y_pos, frdscnt, align='center', alpha=0.9, color='r')
+    plt.xticks(y_pos, frdsuser,rotation=90)
+    plt.ylabel('Friends')
+    plt.title('Top 10 Users(screen_name) with Friends')
+
+    plt.show()
+    
+
