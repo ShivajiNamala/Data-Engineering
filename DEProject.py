@@ -172,3 +172,34 @@ if __name__ == "__main__":
     plt.title('Top 10 Cities')
 
     plt.show()
+    
+#------------------------------------------------------------ 
+#----- Tweets locations -------------------------------------
+#------------------------------------------------------------      
+    
+import os
+os.environ["PROJ_LIB"] = "/opt/conda/envs/TEST/share/proj/"
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+
+m = Basemap(width=12000000,height=8000000,projection='mill',
+            llcrnrlat = 25,
+            llcrnrlon = -130,
+            urcrnrlat = 50,
+            urcrnrlon = -60,
+            resolution='l')
+
+m.drawcoastlines(linewidth=.25)
+m.drawcountries(linewidth=1)
+m.drawstates(color='#757C62')
+
+m.fillcontinents(color='#F9C578',lake_color='#54D0EF')
+m.drawmapboundary(fill_color='#54D0EF')
+
+plt.title('Tweets locations')
+
+for Clon, Clat in coordlist:
+    xpt, ypt = m(Clon, Clat)
+    m.plot(xpt, ypt, 'c+', markersize=1,color='r')
+    
+
